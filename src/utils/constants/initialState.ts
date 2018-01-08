@@ -3,7 +3,7 @@
  */
 const initialState = {
   budget: {
-    transactiond: {},
+    transactions: [],
     expense: 0,
     money: 0,
   },

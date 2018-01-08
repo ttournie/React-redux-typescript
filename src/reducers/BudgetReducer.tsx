@@ -16,6 +16,9 @@ const reducer = (state = budgetInitialState, action: RootAction) => {
     case getType(actions.updateExpense):
       return Object.assign({}, state, { expense: action.value });
 
+    case getType(actions.addTransaction):
+      return Object.assign({}, state, { transactions: [...state.transactions, action.value] });
+
     default:
       return state;
   }
