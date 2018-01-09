@@ -21,6 +21,7 @@ const mapDispatchToProps = (dispatch: Dispatch<IState>) => ({
   },
   removeRow: (id: number) => {
     dispatch(actions.removeTransaction(id));
+    dispatch(actions.updateExpense());
   },
 });
 

@@ -15,12 +15,11 @@ class TransactionItem extends React.Component<Props, IState> {
   }
 
   UpdateAmountRow(amount: string) {
-    var amountNumber = 0;
-    if (amount) {
-      amountNumber = parseInt(amount, 10);
+    var amountNumber = parseInt(amount, 10);
+    if (!isNaN(amountNumber)) {
+      this.props.transaction.amount = amountNumber;
+      this.props.onUpdateTransaction(this.props.transaction);
     }
-    this.props.transaction.amount = amountNumber;
-    this.props.onUpdateTransaction(this.props.transaction);
   }
 
   UpdateDescriptionRow(description: string) {

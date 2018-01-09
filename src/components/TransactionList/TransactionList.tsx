@@ -33,7 +33,7 @@ class TransactionList extends React.Component<Props, IState> {
           ))
         }
         <label htmlFor="expense">Total</label>
-        <input type="text" name="expense" value={expense} disabled/>
+        <input type="text" name="expense" value={expense} disabled={true}/>
       </div>
     );
   }
