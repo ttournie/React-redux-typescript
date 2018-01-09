@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Button from 'material-ui/Button';
 import TransactionItem from '../../containers/TransactionItemContainer/TransactionItemContainer';
 import { IState, Transaction } from '../../utils/models/initialState';
 
@@ -23,8 +24,7 @@ class TransactionList extends React.Component<Props, IState> {
     var {transactions, expense} = this.props;
     return (
       <div>
-        <h2> Transactions List </h2>
-        <button type="button" onClick={this.addRow}>Add Row</button>
+        <h2 className="title"> Transactions List </h2>
         {
           transactions.map((transaction, i) => (
             <div key={i}>
@@ -32,8 +32,11 @@ class TransactionList extends React.Component<Props, IState> {
             </div>
           ))
         }
-        <label htmlFor="expense">Total</label>
-        <input type="text" name="expense" value={expense} disabled={true}/>
+        <Button fab={true} mini={true} color="accent" type="button" aria-label="add" onClick={this.addRow}>+</Button>
+        <div>
+          <label htmlFor="expense">Total</label>
+          <input type="text" name="expense" value={expense} disabled={true}/>
+        </div>
       </div>
     );
   }

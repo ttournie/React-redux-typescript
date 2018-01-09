@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Button from 'material-ui/Button';
 import { Transaction, IState } from '../../utils/models/initialState';
 
 // Define Props type.
@@ -48,7 +49,7 @@ class TransactionItem extends React.Component<Props, IState> {
           onChange={e => this.UpdateAmountRow(e.target.value)}
           value={this.props.transaction.amount}
         />
-        <button type="button" onClick={() => this.removeRow(this.props.transaction.id)}>Remove Row</button>
+        <Button type="button" onClick={() => this.removeRow(this.props.transaction.id)}>-</Button>
       </div>
     );
   }
