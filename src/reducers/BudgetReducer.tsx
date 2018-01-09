@@ -15,7 +15,12 @@ const reducer = (state = budgetInitialState, action: RootAction) => {
   switch (action.type) {
 
     case getType(actions.updateExpense):
-      return Object.assign({}, state, { expense: action.value });
+      const values = state.transactions.map((item: Transaction) => {
+        return item.amount;
+      });
+      const reducerDef = (accumulator: number, currentValue: number) => accumulator + currentValue;
+      const total = values.reduce(reducerDef);
+      return Object.assign({}, state, { expense: total });
 
     case getType(actions.updateTransaction):
       const updatedItems = state.transactions.map((item: Transaction) => {

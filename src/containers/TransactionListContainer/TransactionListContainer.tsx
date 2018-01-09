@@ -12,9 +12,6 @@ const mapStateToProps = (state: IState) => ({
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<IState>) => ({
-  onUpdateExpense: (amount: number) => {
-    dispatch(actions.updateExpense(amount));
-  },
   addRow: () => {
     dispatch(actions.addTransaction());
   },

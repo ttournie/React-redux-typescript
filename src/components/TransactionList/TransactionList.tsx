@@ -6,23 +6,17 @@ import { IState, Transaction } from '../../utils/models/initialState';
 interface Props {
   expense: number;
   transactions: Transaction[];
-  onUpdateExpense: (amount: number) => void;
   addRow: () => void;
 }
 
 class TransactionList extends React.Component<Props, IState> {
   constructor(props: Props) {
     super(props);
-    this.addToTotal = this.addToTotal.bind(this);
     this.addRow = this.addRow.bind(this);
   }
 
   addRow() {
     this.props.addRow();
-  }
-
-  addToTotal() {
-    this.props.onUpdateExpense(10);
   }
 
   render () {
@@ -39,8 +33,7 @@ class TransactionList extends React.Component<Props, IState> {
           ))
         }
         <label htmlFor="expense">Total</label>
-        <input type="text" name="expense" value={expense}/>
-        <button type="button" onClick={this.addToTotal}>Click Me!</button>
+        <input type="text" name="expense" value={expense} disabled/>
       </div>
     );
   }

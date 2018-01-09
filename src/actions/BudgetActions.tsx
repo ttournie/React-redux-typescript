@@ -8,9 +8,8 @@ const BUDGET_REMOVE_TRANSACTION = 'BUDGET_REMOVE_TRANSACTION';
 const BUDGET_UPDATE_TRANSACTION = 'BUDGET_UPDATE_TRANSACTION';
 
 export const actions = {
-  updateExpense: createAction(BUDGET_EXPENSE_UPDATE, (expense: number) => ({
+  updateExpense: createAction(BUDGET_EXPENSE_UPDATE, () => ({
     type: BUDGET_EXPENSE_UPDATE,
-    value: expense,
   })),
   addTransaction: createAction(BUDGET_ADD_TRANSACTION, () => ({
     type: BUDGET_ADD_TRANSACTION,
