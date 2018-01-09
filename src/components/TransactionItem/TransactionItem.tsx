@@ -10,11 +10,14 @@ interface Props {
 class TransactionItem extends React.Component<Props, any> {
   constructor(props: Props) {
     super(props);
-    this.UpdateRow = this.UpdateRow.bind(this);
   }
 
-  UpdateRow(id: number, description: string, amount: number) {
-    this.props.onUpdateTransaction(id, description, amount);
+  UpdateAmountRow(amount: string) {
+    var amountNumber = 0;
+    if (amount) {
+      amountNumber = parseInt(amount)
+    }
+    this.props.onUpdateTransaction(this.props.transaction.id, this.props.transaction.description, amountNumber);
   }
 
   UpdateDescriptionRow(description: string) {
@@ -27,7 +30,7 @@ class TransactionItem extends React.Component<Props, any> {
         <label htmlFor="title">Title</label>
         <input type="text" name="title" onChange={e => this.UpdateDescriptionRow(e.target.value)} value={this.props.transaction.description}/>
         <label htmlFor="title">Amount</label>
-        <input type="text" name="amount"/>
+        <input type="text" name="amount" onChange={e => this.UpdateAmountRow(e.target.value)} value={this.props.transaction.amount}/>
       </div>
     );
   }

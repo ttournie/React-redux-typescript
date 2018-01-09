@@ -1,6 +1,7 @@
 import { getType } from 'typesafe-actions';
 import initialState from '../utils/constants/initialState';
 import { RootAction, actions } from '../actions/BudgetActions';
+import { Transaction } from '../utils/models/initialState'
 
 const budgetInitialState = initialState.budget;
 
@@ -17,7 +18,7 @@ const reducer = (state = budgetInitialState, action: RootAction) => {
       return Object.assign({}, state, { expense: action.value });
 
     case getType(actions.updateTransaction):
-      const updatedItems = state.transactions.map((item: any) => {
+      const updatedItems = state.transactions.map((item: Transaction) => {
         if (item.id === action.value.id) {
           return { ...item, ...action.value };
         }
@@ -30,7 +31,7 @@ const reducer = (state = budgetInitialState, action: RootAction) => {
       return Object.assign({}, state, { transactions: [...state.transactions, row] });
 
     case getType(actions.removeTransaction):
-      return Object.assign({}, state, { transactions: state.transactions.filter((item: any) => item.id !== action.value)});
+      return Object.assign({}, state, { transactions: state.transactions.filter((item: Transaction) => item.id !== action.value)});
 
     default:
       return state;
