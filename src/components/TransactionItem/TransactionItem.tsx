@@ -17,11 +17,15 @@ class TransactionItem extends React.Component<Props, any> {
     this.props.onUpdateTransaction(id, description, amount);
   }
 
+  UpdateDescriptionRow(description: string) {
+    this.props.onUpdateTransaction(this.props.transaction.id, description, this.props.transaction.amount);
+  }
+
   render () {
     return (
       <div>
         <label htmlFor="title">Title</label>
-        <input type="text" name="title"/>
+        <input type="text" name="title" onChange={e => this.UpdateDescriptionRow(e.target.value)} value={this.props.transaction.description}/>
         <label htmlFor="title">Amount</label>
         <input type="text" name="amount"/>
       </div>
