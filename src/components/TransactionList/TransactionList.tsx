@@ -1,13 +1,14 @@
 import * as React from 'react';
-import TransactionItem from '../TransactionItem/TransactionItem';
+import TransactionItem from '../../containers/TransactionItemContainer/TransactionItemContainer';
 import { IState } from '../../utils/models/initialState';
 
 // Define Props type.
 interface Props {
   expense: number;
-  transactions: {description: string, amount: number }[];
+  transactions: {id: number, description: string, amount: number }[];
   onUpdateExpense: (amount: number) => void;
   addRow: () => void;
+  removeRow: (id: number) => void;
 }
 
 class TransactionList extends React.Component<Props, IState> {
@@ -15,10 +16,15 @@ class TransactionList extends React.Component<Props, IState> {
     super(props);
     this.addToTotal = this.addToTotal.bind(this);
     this.addRow = this.addRow.bind(this);
+    this.removeRow = this.removeRow.bind(this);
   }
 
   addRow() {
     this.props.addRow();
+  }
+
+  removeRow(id : number) {
+    this.props.removeRow(id);
   }
 
   addToTotal() {
@@ -32,9 +38,12 @@ class TransactionList extends React.Component<Props, IState> {
         <h2> Transactions List </h2>
         <button type="button" onClick={this.addRow}>Add Row</button>
         {
-          transactions.map((transaction, i) => 
-            <TransactionItem key={i} />
-          )
+          transactions.map((transaction, i) => (
+            <div key={i}>
+              <button type="button" onClick={() => this.removeRow(i)}>Remove Row</button>
+              <TransactionItem id={i}/>
+            </div>
+          ))
         }
         <label htmlFor="expense">Total</label>
         <input type="text" name="expense" value={expense}/>

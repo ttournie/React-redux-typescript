@@ -17,7 +17,11 @@ const reducer = (state = budgetInitialState, action: RootAction) => {
       return Object.assign({}, state, { expense: action.value });
 
     case getType(actions.addTransaction):
-      return Object.assign({}, state, { transactions: [...state.transactions, action.value] });
+      const row = {id:state.transactions.length, ...action.value};
+      return Object.assign({}, state, { transactions: [...state.transactions, row] });
+
+    case getType(actions.removeTransaction):
+      return Object.assign({}, state, { transactions: state.transactions.filter((item: any) => item.id !== action.value)});
 
     default:
       return state;

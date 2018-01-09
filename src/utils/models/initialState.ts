@@ -1,6 +1,6 @@
 export type IState = {
   budget: {
-    transactions: {description: string, amount: number }[],
+    transactions: {id: number, description: string, amount: number }[],
     expense: number,
     money: number,
   },

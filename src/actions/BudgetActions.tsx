@@ -3,6 +3,8 @@ import { createAction } from 'typesafe-actions';
 
 const BUDGET_EXPENSE_UPDATE = 'BUDGET_EXPENSE_UPDATE';
 const BUDGET_ADD_TRANSACTION = 'BUDGET_ADD_TRANSACTION';
+const BUDGET_REMOVE_TRANSACTION = 'BUDGET_REMOVE_TRANSACTION';
+const BUDGET_UPDATE_TRANSACTION = 'BUDGET_UPDATE_TRANSACTION';
 
 export const actions = {
   updateExpense: createAction(BUDGET_EXPENSE_UPDATE, (expense: number) => ({
@@ -14,6 +16,18 @@ export const actions = {
     value: {
       description: '',
       amount: 0,
+    },
+  })),
+  removeTransaction: createAction(BUDGET_REMOVE_TRANSACTION, (id: number) => ({
+    type: BUDGET_REMOVE_TRANSACTION,
+    value: id,
+  })),
+  updateTransaction: createAction(BUDGET_UPDATE_TRANSACTION, (id: number, description: string, amount: number) => ({
+    type: BUDGET_UPDATE_TRANSACTION,
+    value: {
+      id,
+      description,
+      amount,
     },
   })),
 };
