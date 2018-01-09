@@ -1,13 +1,13 @@
 import * as React from 'react';
-// import { IState } from '../../utils/models/initialState';
+import { Transaction, IState } from '../../utils/models/initialState';
 
 // Define Props type.
 interface Props {
-  transaction: any;
-  onUpdateTransaction: (id:number, description: string, amount: number) => void;
+  transaction: Transaction;
+  onUpdateTransaction: (id: number, description: string, amount: number) => void;
 }
 
-class TransactionItem extends React.Component<Props, any> {
+class TransactionItem extends React.Component<Props, IState> {
   constructor(props: Props) {
     super(props);
   }
@@ -15,7 +15,7 @@ class TransactionItem extends React.Component<Props, any> {
   UpdateAmountRow(amount: string) {
     var amountNumber = 0;
     if (amount) {
-      amountNumber = parseInt(amount)
+      amountNumber = parseInt(amount, 10);
     }
     this.props.onUpdateTransaction(this.props.transaction.id, this.props.transaction.description, amountNumber);
   }
@@ -28,9 +28,19 @@ class TransactionItem extends React.Component<Props, any> {
     return (
       <div>
         <label htmlFor="title">Title</label>
-        <input type="text" name="title" onChange={e => this.UpdateDescriptionRow(e.target.value)} value={this.props.transaction.description}/>
+        <input
+          type="text"
+          name="title"
+          onChange={e => this.UpdateDescriptionRow(e.target.value)}
+          value={this.props.transaction.description}
+        />
         <label htmlFor="title">Amount</label>
-        <input type="text" name="amount" onChange={e => this.UpdateAmountRow(e.target.value)} value={this.props.transaction.amount}/>
+        <input
+          type="text"
+          name="amount"
+          onChange={e => this.UpdateAmountRow(e.target.value)}
+          value={this.props.transaction.amount}
+        />
       </div>
     );
   }

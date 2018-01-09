@@ -23,7 +23,7 @@ class TransactionList extends React.Component<Props, IState> {
     this.props.addRow();
   }
 
-  removeRow(id : number) {
+  removeRow(id: number) {
     this.props.removeRow(id);
   }
 
