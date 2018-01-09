@@ -4,7 +4,7 @@ import { Transaction, IState } from '../../utils/models/initialState';
 // Define Props type.
 interface Props {
   transaction: Transaction;
-  onUpdateTransaction: (id: number, description: string, amount: number) => void;
+  onUpdateTransaction: (transaction: Transaction) => void;
 }
 
 class TransactionItem extends React.Component<Props, IState> {
@@ -17,11 +17,13 @@ class TransactionItem extends React.Component<Props, IState> {
     if (amount) {
       amountNumber = parseInt(amount, 10);
     }
-    this.props.onUpdateTransaction(this.props.transaction.id, this.props.transaction.description, amountNumber);
+    this.props.transaction.amount = amountNumber;
+    this.props.onUpdateTransaction(this.props.transaction);
   }
 
   UpdateDescriptionRow(description: string) {
-    this.props.onUpdateTransaction(this.props.transaction.id, description, this.props.transaction.amount);
+    this.props.transaction.description = description;
+    this.props.onUpdateTransaction(this.props.transaction);
   }
 
   render () {

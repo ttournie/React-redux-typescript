@@ -1,5 +1,6 @@
 import { getReturnOfExpression } from 'react-redux-typescript';
 import { createAction } from 'typesafe-actions';
+import { Transaction } from '../utils/models/initialState';
 
 const BUDGET_EXPENSE_UPDATE = 'BUDGET_EXPENSE_UPDATE';
 const BUDGET_ADD_TRANSACTION = 'BUDGET_ADD_TRANSACTION';
@@ -22,13 +23,9 @@ export const actions = {
     type: BUDGET_REMOVE_TRANSACTION,
     value: id,
   })),
-  updateTransaction: createAction(BUDGET_UPDATE_TRANSACTION, (id: number, description: string, amount: number) => ({
+  updateTransaction: createAction(BUDGET_UPDATE_TRANSACTION, (transaction: Transaction) => ({
     type: BUDGET_UPDATE_TRANSACTION,
-    value: {
-      id,
-      description,
-      amount,
-    },
+    value: transaction,
   })),
 };
 

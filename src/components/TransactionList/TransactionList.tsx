@@ -1,11 +1,11 @@
 import * as React from 'react';
 import TransactionItem from '../../containers/TransactionItemContainer/TransactionItemContainer';
-import { IState } from '../../utils/models/initialState';
+import { IState, Transaction } from '../../utils/models/initialState';
 
 // Define Props type.
 interface Props {
   expense: number;
-  transactions: {id: number, description: string, amount: number }[];
+  transactions: Transaction[];
   onUpdateExpense: (amount: number) => void;
   addRow: () => void;
   removeRow: (id: number) => void;
