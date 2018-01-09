@@ -18,9 +18,6 @@ const mapDispatchToProps = (dispatch: Dispatch<IState>) => ({
   addRow: () => {
     dispatch(actions.addTransaction());
   },
-  removeRow: (id: number) => {
-    dispatch(actions.removeTransaction(id));
-  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TransactionList);

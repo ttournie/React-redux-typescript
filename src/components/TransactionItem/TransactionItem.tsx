@@ -5,11 +5,13 @@ import { Transaction, IState } from '../../utils/models/initialState';
 interface Props {
   transaction: Transaction;
   onUpdateTransaction: (transaction: Transaction) => void;
+  removeRow: (id: number) => void;
 }
 
 class TransactionItem extends React.Component<Props, IState> {
   constructor(props: Props) {
     super(props);
+    this.removeRow = this.removeRow.bind(this);
   }
 
   UpdateAmountRow(amount: string) {
@@ -24,6 +26,10 @@ class TransactionItem extends React.Component<Props, IState> {
   UpdateDescriptionRow(description: string) {
     this.props.transaction.description = description;
     this.props.onUpdateTransaction(this.props.transaction);
+  }
+
+  removeRow(id: number) {
+    this.props.removeRow(id);
   }
 
   render () {
@@ -43,6 +49,7 @@ class TransactionItem extends React.Component<Props, IState> {
           onChange={e => this.UpdateAmountRow(e.target.value)}
           value={this.props.transaction.amount}
         />
+        <button type="button" onClick={() => this.removeRow(this.props.transaction.id)}>Remove Row</button>
       </div>
     );
   }

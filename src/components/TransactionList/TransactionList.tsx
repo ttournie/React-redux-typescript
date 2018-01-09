@@ -8,7 +8,6 @@ interface Props {
   transactions: Transaction[];
   onUpdateExpense: (amount: number) => void;
   addRow: () => void;
-  removeRow: (id: number) => void;
 }
 
 class TransactionList extends React.Component<Props, IState> {
@@ -16,15 +15,10 @@ class TransactionList extends React.Component<Props, IState> {
     super(props);
     this.addToTotal = this.addToTotal.bind(this);
     this.addRow = this.addRow.bind(this);
-    this.removeRow = this.removeRow.bind(this);
   }
 
   addRow() {
     this.props.addRow();
-  }
-
-  removeRow(id: number) {
-    this.props.removeRow(id);
   }
 
   addToTotal() {
@@ -40,7 +34,6 @@ class TransactionList extends React.Component<Props, IState> {
         {
           transactions.map((transaction, i) => (
             <div key={i}>
-              <button type="button" onClick={() => this.removeRow(i)}>Remove Row</button>
               <TransactionItem id={i}/>
             </div>
           ))
