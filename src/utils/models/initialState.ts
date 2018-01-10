@@ -8,6 +8,6 @@ export type IState = {
   budget: {
     transactions: Transaction[],
     expense: number,
-    money: number,
+    balance: number,
   },
 };

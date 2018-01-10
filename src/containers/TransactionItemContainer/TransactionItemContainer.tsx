@@ -18,10 +18,12 @@ const mapDispatchToProps = (dispatch: Dispatch<IState>) => ({
   onUpdateTransaction: (transaction: Transaction) => {
     dispatch(actions.updateTransaction(transaction));
     dispatch(actions.updateExpense());
+    dispatch(actions.removeExpensefromBalance());
   },
   removeRow: (id: number) => {
     dispatch(actions.removeTransaction(id));
     dispatch(actions.updateExpense());
+    dispatch(actions.removeExpensefromBalance());
   },
 });
 

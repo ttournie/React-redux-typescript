@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './App.css';
-import BudgetForm from './components/BudgetForm/BudgetForm';
+import BudgetForm from './containers/BudgetFormContainer/BudgetFormContainer';
 import Reboot from 'material-ui/Reboot';
 
 const logo = require('./logo.svg');

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StyleSheet, css } from 'aphrodite';
-
+import { IState } from '../../utils/models/initialState';
 import TransactionList from '../../containers/TransactionListContainer/TransactionListContainer';
 
 const styles = StyleSheet.create({
@@ -9,14 +9,34 @@ const styles = StyleSheet.create({
   },
 });
 
-const BudjetForm = () => {
-  return (
-    <div className={css(styles.wrapper)}>
-      <h2 className="title"> Balance </h2>
-      <input type="text" name="money"/>
-      <TransactionList/>
-    </div>
-  );
-};
+// Define Props type.
+interface Props {
+  balance: number;
+  onUpdateBalance: (balance: number) => void;
+}
+
+class BudjetForm extends React.Component<Props, IState> {
+  constructor(props: Props) {
+    super(props);
+    this.updateBalance = this.updateBalance.bind(this);
+  }
+
+  updateBalance(amount: string) {
+    var amountNumber = parseInt(amount, 10);
+    if (!isNaN(amountNumber)) {
+      this.props.onUpdateBalance(amountNumber);
+    }
+  }
+
+  render() {
+    return (
+      <div className={css(styles.wrapper)}>
+        <h2 className="title"> Balance </h2>
+        <input type="text" name="money" value={this.props.balance} onChange={e => this.updateBalance(e.target.value)}/>
+        <TransactionList/>
+      </div>
+    );
+  }
+}
 
 export default BudjetForm;
