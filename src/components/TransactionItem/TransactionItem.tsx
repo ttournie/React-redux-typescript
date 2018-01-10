@@ -1,6 +1,13 @@
 import * as React from 'react';
 import Button from 'material-ui/Button';
+import { StyleSheet, css } from 'aphrodite';
 import { Transaction, IState } from '../../utils/models/initialState';
+
+const styles = StyleSheet.create({
+  wrapper: {
+      borderBottom: '1px solid'
+  },
+});
 
 // Define Props type.
 interface Props {
@@ -34,7 +41,7 @@ class TransactionItem extends React.Component<Props, IState> {
 
   render () {
     return (
-      <div>
+      <div className={css(styles.wrapper)}>
         <label htmlFor="title">Title</label>
         <input
           type="text"
