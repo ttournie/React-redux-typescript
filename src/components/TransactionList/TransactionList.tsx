@@ -34,7 +34,7 @@ class TransactionList extends React.Component<Props, IState> {
     var {transactions, expense} = this.props;
     return (
       <div>
-        <h2 className="title"> Transactions List </h2>
+        <h2> Transactions List </h2>
         <div className={css(styles.wrapper)}>
           {
             transactions.map((transaction, i) => (

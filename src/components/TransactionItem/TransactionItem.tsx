@@ -5,8 +5,14 @@ import { Transaction, IState } from '../../utils/models/initialState';
 
 const styles = StyleSheet.create({
   wrapper: {
-      borderBottom: '1px solid'
+      marginBottom: '5px'
   },
+  input: {
+    marginLeft: '5px'
+  },
+  inputTitle: {
+    marginRight: '5px'
+  }
 });
 
 // Define Props type.
@@ -48,6 +54,7 @@ class TransactionItem extends React.Component<Props, IState> {
           name="title"
           onChange={e => this.UpdateDescriptionRow(e.target.value)}
           value={this.props.transaction.description}
+          className={css([styles.input, styles.inputTitle])}
         />
         <label htmlFor="title">Amount</label>
         <input
@@ -55,8 +62,9 @@ class TransactionItem extends React.Component<Props, IState> {
           name="amount"
           onChange={e => this.UpdateAmountRow(e.target.value)}
           value={this.props.transaction.amount}
+          className={css(styles.input)}
         />
-        <Button type="button" onClick={() => this.removeRow(this.props.transaction.id)}>-</Button>
+        <Button type="button" color="accent" onClick={() => this.removeRow(this.props.transaction.id)}>remove</Button>
       </div>
     );
   }
