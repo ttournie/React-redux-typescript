@@ -11,7 +11,8 @@ const styles = StyleSheet.create({
 
 // Define Props type.
 interface Props {
-  balance: number;
+  originalBalance: number;
+  currentBalance: number;
   onUpdateBalance: (balance: number) => void;
 }
 
@@ -31,8 +32,15 @@ class BudjetForm extends React.Component<Props, IState> {
   render() {
     return (
       <div className={css(styles.wrapper)}>
-        <h2 className="title"> Balance </h2>
-        <input type="text" name="money" value={this.props.balance} onChange={e => this.updateBalance(e.target.value)}/>
+        <h2 className="title"> Original Balance </h2>
+        <input
+          type="text"
+          name="money"
+          value={this.props.originalBalance}
+          onChange={e => this.updateBalance(e.target.value)}
+        />
+        <h2 className="title"> Current Balance </h2>
+        <input type="text" name="currentMoney" value={this.props.currentBalance} disabled={true}/>
         <TransactionList/>
       </div>
     );

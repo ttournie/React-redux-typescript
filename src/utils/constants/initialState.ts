@@ -5,7 +5,8 @@ const initialState = {
   budget: {
     transactions: [],
     expense: 0,
-    balance: 0,
+    originalBalance: 0,
+    currentBalance: 0,
   },
 };
 

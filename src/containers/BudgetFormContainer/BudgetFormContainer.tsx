@@ -5,7 +5,8 @@ import BudgetForm from '../../components/BudgetForm/BudgetForm';
 import { actions } from '../../actions/BudgetActions';
 
 const mapStateToProps = (state: IState) => ({
-  balance: state.budget.balance,
+  originalBalance: state.budget.originalBalance,
+  currentBalance: state.budget.currentBalance,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<IState>) => ({
